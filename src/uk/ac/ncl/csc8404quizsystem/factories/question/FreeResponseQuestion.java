@@ -7,9 +7,9 @@ final class FreeResponseQuestion extends QuestionFactory {
         super(questionFormulation, answer);
     }
 
-    public Boolean checkAnswer(String answer){
-        answer = answer.toLowerCase();
-        answer = answer.trim();
-        return(super.checkAnswer(answer));
+    public Boolean checkAnswer(String studentAnswer){
+        studentAnswer = studentAnswer.toLowerCase();
+        studentAnswer = studentAnswer.trim();
+        return(super.checkAnswer(studentAnswer));
     }
 }
