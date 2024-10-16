@@ -35,8 +35,11 @@ public abstract class QuestionFactory implements Question {
             Arrays.sort(answers);
             String processedAnswer = new String(answers);
             q = new MultipleChoiceQuestion(questionFormulation, processedAnswer);
+
+
         } else if (questionType.equals(FREE_RESPONSE)) {
-            q = new FreeResponseQuestion(questionFormulation, answer);
+            String processedAnswer = answer.trim().replaceAll(" +", " ");
+            q = new FreeResponseQuestion(questionFormulation, processedAnswer);
         } else {
             throw new IllegalArgumentException(
                     "invalid question type: " + questionType);

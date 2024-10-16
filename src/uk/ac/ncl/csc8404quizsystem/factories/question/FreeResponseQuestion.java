@@ -10,6 +10,7 @@ final class FreeResponseQuestion extends QuestionFactory {
     public Boolean checkAnswer(String studentAnswer){
         studentAnswer = studentAnswer.toLowerCase();
         studentAnswer = studentAnswer.trim();
+        studentAnswer = studentAnswer.trim().replaceAll(" +", " ");
         return(super.checkAnswer(studentAnswer));
     }
 }
