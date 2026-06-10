@@ -3,19 +3,21 @@ package uk.ac.ncl.csc8404quizsystem.classes;
 
 import uk.ac.ncl.csc8404quizsystem.interfaces.Question;
 
+import java.util.HashSet;
 import java.util.Iterator;
 
+/**
+ * class representing a Quiz
+ */
 public class Quiz {
-
-
 
     private int quizId;
 
-    private Question[] questions;
+    private HashSet<Question> questions;
 
-    private static int quizIdCounter;
+    protected static int quizIdCounter;
 
-    public Quiz(Question[] questions) {
+    public Quiz(HashSet<Question> questions) {
 
         this.questions = questions;
         this.quizId = quizIdCounter;
@@ -23,18 +25,30 @@ public class Quiz {
 
     }
 
-    public Question[] getQuestions(){
+    public HashSet<Question> getQuestions(){
         return questions;
     }
 
+    public int getQuizId(){
+        return quizId;
+    }
+
+    /**
+     *
+     * @return Quiz as string
+     */
     public String toString(){
 
-        String questionsString = "";
-        for(int i = 0; i < questions.length; i++){
-            questionsString += questions[i].toString();
-            questionsString += "\n";
+        String questionsString;
+        StringBuilder sb = new StringBuilder();
+        Iterator iterator = questions.iterator();
+
+        while(iterator.hasNext()){
+            sb.append(iterator.next().toString());
+            sb.append("\n\n");
         }
 
+        questionsString = sb.toString();
         return("Quiz ID: " + quizId + "\n" + "Questions: " + questionsString);
     }
 }
